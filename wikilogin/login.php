@@ -1,8 +1,8 @@
 <?php
 // get username and password
 
-$user = $_REQUEST['user'];
-$password = $_REQUEST['password'];
+$user = $_REQUEST['lgname'];
+$password = $_REQUEST['lgpassword'];
 
 // get fresh token and cookie
 exec("curl -c cookies.txt -d 'lgname=' . $user . '&lgpassword=' . $password . '&action=login&format=xml' http://mahan.webfactional.com/wiki/api.php -o output.xml");
@@ -36,8 +36,8 @@ echo("code<br>");
 <form name = "myform" action="../api.php" method="post">
 
 Action: <input type="text" name="action" value="login"><br>
-Name: <input type="text" name="lgname" value="Bryan"><br>
-Password: <input type="text" name="lgpassword" value="test"><br>
+Name: <input type="text" name="lgname" value="<?php echo $user ?>" ><br>
+Password: <input type="text" name="lgpassword" value="<?php echo $password ?>"><br>
 Token: <input type="text" name="lgtoken" value="<?echo $token;?>"><br>
 
 <input type="submit">
